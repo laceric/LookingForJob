@@ -20,7 +20,7 @@ _____________
 - L'ajout d'un outils de filtrage pour mieux filtrer et trier les offres selon leur libellé et/ou contenu.
 - Une adaptation de l'utilisation du LLM selon les points précédents afin de cibler des questions plus pertinantes sur l'analyse des offres.
 
-============================================================================================
+_____________
 
 ## Architechture : 
 
@@ -47,6 +47,4 @@ __________________________
   - secrets_analyst_llm.py => Rassemble les constantes "Secrètes" nécessaires aux programmes de scraping. (A faire évoluer en Secret.)
   - cv_model.py => Contient la variable correspondant au contenu d'un modèle de cv sous forme de chaîne de caractères pour l'analyse LLM.
 __________________________
-
-============================================================================================
 
