@@ -5,7 +5,7 @@ Le principe de ce projet est de simplifié la recherche d'emploie en automatisan
 Pour cela on passe par des programme d'automatisation en python et des bases de données sur Notion.
 Et pour le llm on utilise l'api gratuite de Groq (https://console.groq.com/playground).
 
-=========================================================================================================================================================================
+============================================================================================
 
 Fonctionnement :
 1) On définie les paramètres de scraping sur la base de données Notion dédié.
@@ -20,7 +20,7 @@ Axes de travail :
 - L'ajout d'un outils de filtrage pour mieux filtrer et trier les offres selon leur libellé et/ou contenu.
 - Une adaptation de l'utilisation du LLM selon les points précédents afin de cibler des questions plus pertinantes sur l'analyse des offres.
 
-=========================================================================================================================================================================
+============================================================================================
 
 Architechture : 
 
@@ -48,5 +48,5 @@ Programme python :
   - cv_model.py => Contient la variable correspondant au contenu d'un modèle de cv sous forme de chaîne de caractères pour l'analyse LLM.
 __________________________
 
- =========================================================================================================================================================================
+============================================================================================
 
