@@ -5,4 +5,3 @@ DATABASE_PARAM_SCRAP_OFFRES_ID = "id_database_notion_parametrage"
 
 # Constante pour session Selenium
 CHROME_PROFILE_PATH = 'chemin_du_profil_chrome_utilisé'
-EXECUTABLE_PATH_CHROME_SERVICE = 'chemin_du_profil_\\chromedriver.exe'
