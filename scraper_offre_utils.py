@@ -11,6 +11,8 @@ from selenium.webdriver.common.by import By
 
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.common.exceptions import SessionNotCreatedException
 
 # BLOC 3 => Heure actuelle de paris
 #########################################################
@@ -19,7 +21,7 @@ from datetime import datetime
 
 # Secrets 
 #########################################################
-from secrets_scraper import NOTION_API_KEY, DATABASE_OFFRES_ID,  DATABASE_PARAM_SCRAP_OFFRES_ID, CHROME_PROFILE_PATH, EXECUTABLE_PATH_CHROME_SERVICE
+from secrets_scraper import NOTION_API_KEY, DATABASE_OFFRES_ID,  DATABASE_PARAM_SCRAP_OFFRES_ID, CHROME_PROFILE_PATH
 ###############################################################################################################################################################################
 
 # BLOC 1 => API NOTION
@@ -261,18 +263,23 @@ def ajout_candidature_to_notion(data):
 ###############################################################################################################################################################################
 # BLOC 2 => Session Selenium
 def lancement_session_selenium():
-    # Configuration des options Chrome
-    chrome_options = Options()
-    chrome_options.add_argument("--disable-search-engine-choice-screen")
-    chrome_options.add_argument(f"user-data-dir={CHROME_PROFILE_PATH}")
+    try:
+        # Configuration des options Chrome
+        chrome_options = Options()
+        chrome_options.add_argument("--disable-search-engine-choice-screen")
+        chrome_options.add_argument(f"user-data-dir={CHROME_PROFILE_PATH}")
+        
+        # Utilisation de ChromeDriverManager pour gérer la version correcte de ChromeDriver
+        service = Service(ChromeDriverManager().install())
+        
+        # Initialisation du navigateur
+        driver = webdriver.Chrome(service=service, options=chrome_options)
 
-    # Initialisation du service ChromeDriver
-    service = Service(executable_path = EXECUTABLE_PATH_CHROME_SERVICE)
+    except SessionNotCreatedException as e:
+        print(f"Erreur lors de la création de la session Chrome: {e}")
+        print("La version de ChromeDriver est incompatible avec la version actuelle de Chrome.")
+        return None
 
-
-    # Initialisation du navigateur
-    driver = webdriver.Chrome(service=service, options=chrome_options)
-    
     return driver
 
 
